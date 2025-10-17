@@ -32,7 +32,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">頁面導航</h2>
-        <div className="flex gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button
             onClick={() => navigate({ to: '/dashboard' })}
             className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition transform hover:-translate-y-0.5 hover:shadow-lg"
@@ -44,6 +44,12 @@ function Home() {
             className="px-6 py-3 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-600 transition transform hover:-translate-y-0.5 hover:shadow-lg"
           >
             查看地圖
+          </button>
+          <button
+            onClick={() => navigate({ to: '/videos' })}
+            className="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition transform hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            監視器影像
           </button>
         </div>
       </div>
