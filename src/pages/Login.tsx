@@ -2,7 +2,6 @@ import { useState, FormEvent } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { mockLogin } from '../services/auth';
 import { setToken } from '../utils/tokenManager';
-import './Login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -36,13 +35,15 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h1>登入系統</h1>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-2xl p-8">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">登入系統</h1>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">帳號</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+              帳號
+            </label>
             <input
               type="text"
               id="username"
@@ -51,11 +52,14 @@ function Login() {
               placeholder="請輸入帳號"
               required
               disabled={loading}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition disabled:bg-gray-100 disabled:cursor-not-allowed"
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">密碼</label>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              密碼
+            </label>
             <input
               type="password"
               id="password"
@@ -64,19 +68,28 @@ function Login() {
               placeholder="請輸入密碼"
               required
               disabled={loading}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition disabled:bg-gray-100 disabled:cursor-not-allowed"
             />
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && (
+            <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg text-sm text-center">
+              {error}
+            </div>
+          )}
 
-          <button type="submit" className="login-button" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold py-3 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
+          >
             {loading ? '登入中...' : '登入'}
           </button>
         </form>
 
-        <div className="hint">
-          <p>測試帳號：admin</p>
-          <p>測試密碼：admin123</p>
+        <div className="mt-6 pt-6 border-t border-gray-200 text-center space-y-1">
+          <p className="text-sm text-gray-600">測試帳號：admin</p>
+          <p className="text-sm text-gray-600">測試密碼：admin123</p>
         </div>
       </div>
     </div>
